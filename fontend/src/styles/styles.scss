@@ -1,7 +1,59 @@
-.App {
-    padding: 2rem
+
+
+body {
+    background-image: url('../img/background.jpg');
+
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    /* height: 100%; */
 }
 
-h1 {
-    background: greenyellow;
+.App {
+    padding: 3rem 3rem;
+}
+
+.addNotes {
+    background-image: url('../img/addnote.png');
+    background-position: center;
+    background-size: cover;
+
+    height: 250px;
+    width: 250px;
+
+    padding: 2rem 1rem 1rem 1rem;
+    margin: 1rem 0;
+}
+
+.notes {
+    background-image: url('../img/stickynote.png');
+    background-position: center;
+    background-size: cover;
+
+    height: 250px;
+    width: 250px;
+
+    padding: 2rem 1rem 1rem 1rem;
+    margin: 1rem 0;
+}
+
+.deleteButton, .addButton {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.addButton {
+    border: transparent;
+    transform: rotate(10deg)
+}
+
+.taskFooter {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: rotate(-5deg)
+    // width: 100%;
 }

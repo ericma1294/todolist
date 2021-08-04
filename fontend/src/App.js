@@ -1,33 +1,29 @@
 import React, { useState, useEffect } from 'react'
 import './styles/App.css'
-
 import './styles/styles.css'
+
+import taskService from './services/tasks'
+import axios from 'axios'
 
 import { Button, Input, List, Card, Row, Col, Modal } from 'antd'
 import useWindowDimensions from './components/useWindowDimensions'
 
-const dummy = [
-  {
-    id: 1,
-    task: "numba 1"
-  },
-  {
-    id: 2,
-    task: "numba 2"
-  },
-  {
-    id: 3,
-    task: "numba 3"
-  }
-]
-
 function App() {
-  const [ data, setData ] = useState(dummy)
+  const [ data, setData ] = useState([])
   const [ currInput, setCurrInput ] = useState('')
 
-  const { height, width } = useWindowDimensions();
+  // const { height, width } = useWindowDimensions();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const [test, setTest] = useState(false)
+
+  useEffect(() => {
+    taskService
+        .getAll()
+        .then(initialTasks => {
+          setData(initialTasks)
+        })
+  }, [])
 
   const showModal = () => setIsModalVisible(true)
 
@@ -35,40 +31,71 @@ function App() {
 
   const handleAddInput = (event) => setCurrInput(event.target.value);
   
-  const handleAddItem = () => {
-    var updatedList = [...data]
+  const handleAddItem = (event) => {
+    event.preventDefault()
     var newTask = {
       id: setNewID(),
       task: currInput
     }
-    setData(updatedList.concat(newTask))
-    setIsModalVisible(false)
+
+    taskService
+      .create(newTask)
+      .then(res => {
+        setData(data.concat(res))
+        setIsModalVisible(false)
+        setCurrInput('')
+      })
   }
 
-  const handleDelete = (id) => setData(data.filter((val) => val.id !== id))
+  const handleDelete = (id) => {
+    console.log("DELETE!!", id)
+    taskService
+      .deleteTask(id)
+      .then(res => {
+        console.log('RESPONSE', res)
+        setData(res)
+        
+      })
+
+    // setData(data.filter((val) => val.id !== id))
+  }
 
   const setNewID = () => data.length === 0 ? 1 : data[data.length - 1].id + 1
 
   return (
     <div className="App">
       <div>
-        <List
-          grid={{ gutter: 16, column: width < 768 ? 1 : width < 992 ? 2 : 4 }}
-          dataSource={data}
-          renderItem={item => (
-            <List.Item>
-              <Card title={item.task}>
-                Card content
-                <Button type='primary' onClick={() => handleDelete(item.id)}>Delete</Button>
-              </Card>
-            </List.Item>
-          )}
-        />  
-        <Button type='primary' onClick={showModal}>Add</Button>
+        <Row>
+          {
+            data.map((val) => {
+              return (
+                <Col key={val.id} xs={24} sm={12} lg={6}>
+                  <Row className='notes' justify="center">
+                    <Col span={24}>
+                      <h1>{val.task}</h1>
+                      <div className='taskFooter'>
+                        <button className='deleteButton' onClick={() => handleDelete(val.id)}>Done!</button>
+                      </div>
+                    </Col>
+                  </Row>
+                </Col>
+              )
+            })
+          }
+          <Col xs={24} sm={12} lg={6}>
+            <Row className='addNotes' justify="center" align="middle">
+              <Col span={24}>
+                <button className='addButton' onClick={showModal}>
+                  <h1>Add</h1>
+                </button>
+              </Col>
+            </Row>
+          </Col>
+        </Row>   
       </div>
 
       <Modal title="Basic Modal" visible={isModalVisible} onOk={handleAddItem} onCancel={handleCancel}>
-        <Input placeholder="Basic usage" onChange={(e) => handleAddInput(e)} />
+        <Input placeholder="Basic usage" onChange={(e) => handleAddInput(e)} value={currInput} />
 
       </Modal>
     </div>
