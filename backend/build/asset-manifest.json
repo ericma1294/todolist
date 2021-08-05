@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6b452977.chunk.css",
+    "main.js": "/static/js/main.47f4a29a.chunk.js",
+    "main.js.map": "/static/js/main.47f4a29a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.9b7b5b20.js",
+    "runtime-main.js.map": "/static/js/runtime-main.9b7b5b20.js.map",
+    "static/css/2.83a79fa7.chunk.css": "/static/css/2.83a79fa7.chunk.css",
+    "static/js/2.13ce4f8d.chunk.js": "/static/js/2.13ce4f8d.chunk.js",
+    "static/js/2.13ce4f8d.chunk.js.map": "/static/js/2.13ce4f8d.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.83a79fa7.chunk.css.map": "/static/css/2.83a79fa7.chunk.css.map",
+    "static/css/main.6b452977.chunk.css.map": "/static/css/main.6b452977.chunk.css.map",
+    "static/js/2.13ce4f8d.chunk.js.LICENSE.txt": "/static/js/2.13ce4f8d.chunk.js.LICENSE.txt",
+    "static/media/styles.css": "/static/media/stickynote.32aeaa11.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9b7b5b20.js",
+    "static/css/2.83a79fa7.chunk.css",
+    "static/js/2.13ce4f8d.chunk.js",
+    "static/css/main.6b452977.chunk.css",
+    "static/js/main.47f4a29a.chunk.js"
+  ]
+}
