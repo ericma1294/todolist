@@ -13,7 +13,11 @@ body {
 }
 
 .App {
-    padding: 3rem 3rem;
+    padding: 3rem 2rem;
+
+    h2, h3 {
+        margin: 0
+    }
 }
 
 .addNotes {
@@ -37,7 +41,7 @@ body {
     width: 250px;
 
     padding: 2rem 1rem 1rem 1rem;
-    margin: 1rem 0;
+    margin: 1rem;
 }
 
 .deleteButton, .addButton {
@@ -50,10 +54,33 @@ body {
     transform: rotate(10deg)
 }
 
-.taskFooter {
+.deleteButton {
     position: absolute;
     bottom: 0;
     right: 0;
     transform: rotate(-5deg)
-    // width: 100%;
+}
+
+.mobileDisplay {
+    background-image: url('../img/mobileStickynote.png');
+    background-position: center;
+    background-size: cover;
+    width: 320px;
+    height: 50px;
+    margin: 0.5rem 0;
+}
+
+.deadline {
+    position: absolute;
+    bottom: 0;
+    left: 0.5rem;
+    transform: rotate(-1deg);
+    margin: 0;
+    color: red;
+    border: dashed gray 1px;
+    padding: 0.2rem;
+}
+
+.mobileDeadline {
+    color: red;    
 }

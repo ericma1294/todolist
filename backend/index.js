@@ -9,7 +9,21 @@ app.use(cors())
 let notes = [
     {
       id: 1,
-      task: "numba 1"
+      task: "numba 1",
+      description: 'get that number 1 on the test this week!',
+      deadline: '2020-09-20'
+    },
+    {
+        id: 2,
+        task: "buy a running shoe",
+        description: 'get that number 1 on the test this week!',
+        deadline: '2020-08-20'
+    },
+    {
+        id: 3,
+        task: "numba 3",
+        description: 'groceries',
+        deadline: '2020-08-21'
     }
 ]
 
@@ -62,7 +76,9 @@ app.post('/api/tasks', (request, response) => {
   
     const note = {
       id: body.id,
-      task: body.task
+      task: body.task,
+      description: body.description,
+      deadline: body.deadline
     }
   
     notes = notes.concat(note)
